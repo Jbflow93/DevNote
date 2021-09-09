@@ -3,16 +3,16 @@ install: skip
 services: 
   - docker
 script:
-  - "docker build -t jbflow93/ezekiel17/devnote ."
+  - "docker build -t jbflow93/devnote ."
 after_success: 
   - "echo \"$DOCKER_PASSWORD\" | docker login -u \"$DOCKER_ID\" --password-stdin"
-  - "docker push jbflow93/" 
+  - "docker push jbflow93/devnote" 
 deploy: 
   access_key_id: $AWS_ACCESS_KEY
   app: "DevNote"
   bucket_name: devnote-bucket
   bucket_path: docker
-  env: Devnote-env
+  env: DevNote-env-1
   provider: elasticbeanstalk
   region: us-west-2
   secret_access_key: $AWS_SECRET_KEY
